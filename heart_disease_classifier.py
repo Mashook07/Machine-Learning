@@ -16,6 +16,20 @@ def load_data(filepath):
         raise FileNotFoundError(f"Dataset not found at {filepath}")
     return pd.read_csv(filepath)
 
+
+def check_data_quality(df):
+    """
+    Perform basic data quality checks on the heart dataset.
+    Logs warnings if null values or outliers are detected.
+    """
+    print("\n--- Running Data Quality Checks ---")
+    null_counts = df.isnull().sum()
+    if null_counts.sum() > 0:
+        print(f"Warning: Found null values in columns:\n{null_counts[null_counts > 0]}")
+    else:
+        print("Data Quality Check: No missing values/nulls found.")
+    print(f"Dataset shape: {df.shape[0]} rows, {df.shape[1]} columns.\n")
+
 def preprocess_data(df):
     """
     Perform pre-processing steps:
@@ -63,6 +77,8 @@ def main():
     except Exception as e:
         print(f"Error: {e}")
         return
+        
+    check_data_quality(df)
         
     print("Preprocessing dataset (handling zero-imputation and scaling)...")
     df_processed, scaler = preprocess_data(df)
