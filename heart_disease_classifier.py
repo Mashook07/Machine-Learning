@@ -100,6 +100,14 @@ def main():
         
     clf.fit(X_train, y_train)
     
+    if args.model == "random_forest":
+        print("\n--- Feature Importances (Top 5) ---")
+        importances = clf.feature_importances_
+        indices = np.argsort(importances)[::-1]
+        features = X.columns
+        for f in range(min(5, len(features))):
+            print(f"{f + 1}. {features[indices[f]]}: {importances[indices[f]]:.4f}")
+            
     # Evaluate
     y_pred = clf.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
