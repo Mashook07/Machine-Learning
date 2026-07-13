@@ -17,6 +17,8 @@ Welcome to the Machine Learning Learning Repository! This repository contains a 
 ├── insurance.csv            # Medical Insurance premium dataset
 ├── ml.ipynb                 # Linear Regression notebook for Insurance charges prediction
 ├── insurance_predictor.py   # CLI regression script for Insurance charges prediction
+├── Copy_of_TitanicModels.ipynb  # Titanic survival prediction ML notebook
+├── app.py                   # Streamlit web app for model deployment
 ├── requirements.txt         # Project dependencies setup
 └── README.md                # Repository documentation
 ```
@@ -115,3 +117,32 @@ python heart_disease_classifier.py --data heart.csv --model random_forest --save
 # Train a Support Vector Machine classifier
 python heart_disease_classifier.py --data heart.csv --model svm
 ```
+
+---
+
+## Project 4: Titanic Survival Prediction
+
+### **Dataset Overview**
+Classic Kaggle challenge — predict passenger survival aboard the Titanic based on demographic and ticket information:
+* **Features**: `Pclass`, `Sex`, `Age`, `SibSp`, `Parch`, `Fare`, `Embarked`.
+* **Target variable**: `Survived` (1 = survived, 0 = did not survive).
+
+### **Workflow & Analysis**
+1. **EDA**: Visualizing survival rates by class, gender, and age groups.
+2. **Feature Engineering**: Handling missing values, creating new features (title extraction, family size).
+3. **Models Compared**: Logistic Regression, Decision Tree, Random Forest, and Gradient Boosting.
+4. **Evaluation**: Accuracy, Precision, Recall, F1-Score, and Confusion Matrix.
+
+---
+
+## 🚀 Web App (Streamlit)
+
+An interactive web application is included to run predictions using trained models directly in the browser.
+
+### **Running the App**
+```bash
+streamlit run app.py
+```
+The app lets you select a model (Heart Disease, Insurance, or Car Price) and input feature values to get real-time predictions.
+
+---
